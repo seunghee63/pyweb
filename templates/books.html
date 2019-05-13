@@ -3,6 +3,15 @@
 </head>
 <body>
 
+<center>
+    {% for i in result %}
+	<p> ----------- </p>
+    	<p> Name of Book : {{i["name"]}}</p>
+    	<p> Price of Book : {{i["price"]}}</p>
+    	<p> Author : {{i["writer"]}}</p>
+    	<p> Publisher : {{i["publisher"]}}</p>
+    {% endfor %}
+</center>
 </body>
 </html>
 
