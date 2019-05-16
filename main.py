@@ -15,7 +15,7 @@ def score():
 #요청은 request.form에 다 담김!
 @app.route('/books', methods=['GET','POST'])
 def result():
-    if request.method == 'POST': #입력값 없이 바로 주소쳐서 넘어갔을 경우
+    if request.method == 'POST': 
         books.insert_one(request.form.to_dict(flat='true'))
       
     #return books.watch()
