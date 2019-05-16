@@ -37,13 +37,13 @@ def signup():
         session['userEmail'] = request.form['userEmail']
 	return render_template('welcome.html',info = session['userEmail'])
 
-@app.route('/signin', methods=['GET''POST'])
+@app.route('/signin', methods=['GET','POST'])
 def signin():
     if request.method == 'GET':
         return render_template('signin.html')
     elif request.method == 'POST':
         if Users.find_one(request.form.to_dict(flat='true')) is not None:
-	    session['userEmail'] = request.form['userEmail']
+            session['userEmail'] = request.form['userEmail']
             return render_template('welcome.html', info = session['userEmail'])
 	return redirect(url_for('signin'))
 
