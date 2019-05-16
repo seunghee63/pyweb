@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 import pymongo
 
 mongo_url = 'mongodb+srv://song:yeji9140@cluster0-v0lp5.mongodb.net/test?retryWrites=true'
 client = pymongo.MongoClient(mongo_url)
 db = pymongo.database.Database(client,'Cluster0')
 books = pymongo.collection.Collection(db,'Books')
+users = pymongo.collection.Collection(db,'Users')
+
 
 app = Flask(__name__)
 
@@ -20,6 +22,15 @@ def result():
       
     #return books.watch()
     return render_template('books.html',result = books.find({})) 
+
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+    if request.method == 'GET':
+        return render_template('singip.html')
+    elif request.method == 'POST':
+        Users.insert_one(request.form.to_dict(flat='true'))
+        session['userEmail'] = request.form['userEmail']
+        return render_template('welcome.html', info = session['userEmail'])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 5000)
