@@ -23,12 +23,11 @@ def register():
 
 # 요청은 request.form에 다 담김!
 @app.route('/books', methods=['GET', 'POST'])
-def books():
+def showbooks():
     if request.method == 'POST':
         if not 'userEmail' in session :
             return render_template('signin.html')
         books.insert_one(request.form.to_dict(flat='true'))
-
     if not 'userEmail' in session:
         return render_template('signin.html')
     return render_template('books.html', result=books.find({}))
