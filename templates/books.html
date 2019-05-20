@@ -1,8 +1,5 @@
-<html>
-<head>
-</head>
-<body>
-
+{% extends "base.html" %}
+{% block  content %}
 <center>
     {% for i in result %}
 	<p> ----------- </p>
@@ -12,7 +9,7 @@
     	<p> Publisher : {{i["publisher"]}}</p>
     {% endfor %}
 </center>
-</body>
-</html>
+{% endblock  %}
+
 
 

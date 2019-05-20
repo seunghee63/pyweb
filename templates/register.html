@@ -1,7 +1,5 @@
-<html>
-<head>
-</head>
-<body>
+{% extends "base.html" %}
+{% block  content %}
 <center>
     <form method = "POST" action="./books">
         Book Name : <input name = "name" type="text" placeholder="Name of Book"/><br>
@@ -11,5 +9,4 @@
         <input type = "submit" value="register"/>
     </form>
 </center>
-</body>
-</html>
+{% endblock %}
