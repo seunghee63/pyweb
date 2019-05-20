@@ -19,7 +19,7 @@ app.secret_key = "111"
 @app.route('/register')
 def register():
     if not 'userEmail' in session:
-        return render_template('signin.html')
+        return redirect(url_for('signin'))
 
     return render_template('register.html')
 
@@ -28,10 +28,10 @@ def register():
 def showbooks():
     if request.method == 'POST':
         if not 'userEmail' in session :
-            return render_template('signin.html')
+            return redirect(url_for('signin'))
         books.insert_one(request.form.to_dict(flat='true'))
     if not 'userEmail' in session:
-        return render_template('signin.html')
+        return redirect(url_for('signin'))
     return render_template('books.html', result=books.find({}))
 
 
@@ -39,7 +39,7 @@ def showbooks():
 def signup():
     if request.method == 'GET':
         if not 'userEmail' in session:
-            return render_template('signup.html')
+            return redirect(url_for('signin'))
         return render_template('welcome.html', info="로그인이 된 상황입니다. 로그아웃 후, 회원가입이 가능합니다.")
     elif request.method == 'POST':
         if not 'userEmail' in session:
@@ -53,7 +53,7 @@ def signup():
 def signin():
     if request.method == 'GET':
         if not 'userEmail' in session:
-            return render_template('signin.html')
+            return redirect(url_for('signin'))
         return render_template('welcome.html', info = "이미 로그인 하셨습니다. 로그아웃 후, 재 로그인이 가능합니다..")
     elif request.method == 'POST':
         if users.find_one(request.form.to_dict(flat='true'))is not None:
