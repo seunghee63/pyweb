@@ -1,6 +1,6 @@
 {
-    "MongoID" : "",
-    "MongoPassword":"",
-    "MongoURL": 
+    "MongoID" : "song",
+    "MongoPassword":"yeji9140",
+    "MongoURL": "@cluster0-v0lp5.mongodb.net/test?retryWrites=true"
 
 }
