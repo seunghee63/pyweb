@@ -5,13 +5,13 @@ class User():
         self.users = pymongo.collection.Collection(db,'Users')
     
     def userValidation(self, userDict):
-        if self.users.find_one(userDict) is not None:
+        if self.users.find_one(userDict):
             return False
         else:
             return True
 
     def userAuthentication(self,userDict):
-        if self.users.find_one(userDict) is not None:
+        if self.users.find_one(userDict):
             return True
         else:
             return False
